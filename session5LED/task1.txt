@@ -1,0 +1,17 @@
+#include <stdlib.h>
+#include <types.h>
+#include "debug.h"
+void main() {
+
+    GPIO_Digital_Output(&GPIOD_ODR,_GPIO_PINMASK_ALL);
+    while(1)
+    {
+         blank(&GPIOD_ODR,10);
+         Delay_ms(2000);
+         blank_port(&GPIOD_ODR,0b0000110001110101);
+         Delay_ms(2000);
+         blank_port_all_pins(&GPIOD_ODR);
+         Delay_ms(2000);
+    }
+    
+}
