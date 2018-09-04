@@ -1,0 +1,19 @@
+void main() {
+   
+GPIO_Digital_Input(&GPIOE_IDR,_GPIO_PINMASK_11|_GPIO_PINMASK_12);
+GPIO_Digital_Output(&GPIOE_ODR,_GPIO_PINMASK_14);
+
+while(1)
+{
+  if(Button(&GPIOE_IDR, 11, 1, 1))
+  {   
+      GPIOE_ODR|=1<<14;
+  }
+  else if(Button(&GPIOE_IDR, 12, 1, 1))
+  {
+      GPIOE_ODR&=~(1<<14);
+  } 
+}
+
+
+}

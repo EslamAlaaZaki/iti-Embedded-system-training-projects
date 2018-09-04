@@ -1,0 +1,21 @@
+void main() {
+   unsigned long long x=0;
+   int counter=0;
+GPIO_Digital_Input(&GPIOE_IDR,_GPIO_PINMASK_11|_GPIO_PINMASK_12);
+GPIO_Digital_Output(&GPIOE_ODR,_GPIO_PINMASK_14);
+
+while(1)
+{
+  if(Button(&GPIOE_IDR, 11, 1, 1))
+  {   counter++;
+      while(Button(&GPIOE_IDR, 11, 1, 1)){}
+      //GPIOE_ODR|=1<<14;
+  }
+  if(counter==2){ GPIOE_ODR&=~(1<<14);counter=0;}
+  if((counter==1)&((GPIOE_ODR&0x4000)==0)){GPIOE_ODR|=1<<14;counter=0;}
+  x++;
+  if(x==10000){counter=0;x=0;}
+}
+
+
+}

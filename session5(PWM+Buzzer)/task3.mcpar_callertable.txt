@@ -1,0 +1,10 @@
+main
+	__CC2DW
+	__FillZeros
+	GPIO_Digital_Output
+		GPIO_Config
+			GPIO_Clk_Enable
+	buzzer
+		_FloatToUnsignedLongLong
+			_FloatToSignedLongLong
+		_Div_64x64_U

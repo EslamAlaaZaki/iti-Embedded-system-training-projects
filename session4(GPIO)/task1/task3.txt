@@ -1,0 +1,46 @@
+void main() 
+{
+
+   int index=0;
+   int b=15;
+   unsigned long* output[4]={&GPIOA_ODR,&GPIOB_ODR,&GPIOC_ODR,&GPIOD_ODR};
+   
+GPIO_Digital_Input(&GPIOE_IDR,_GPIO_PINMASK_11|_GPIO_PINMASK_12);
+GPIO_Digital_Output(&GPIOA_ODR,_GPIO_PINMASK_ALL);
+GPIO_Digital_Output(&GPIOB_ODR,_GPIO_PINMASK_ALL);
+GPIO_Digital_Output(&GPIOC_ODR,_GPIO_PINMASK_ALL);
+GPIO_Digital_Output(&GPIOD_ODR,_GPIO_PINMASK_ALL);
+
+while(1)
+{
+  if(Button(&GPIOE_IDR, 11, 1, 1))
+  {
+      *output[index]=0;
+      b--;
+      if(b==-1)
+      {
+        index++;
+        index&=3;
+        if(index==0)b=15;
+        else if(index==1)b=12;
+        else if(index==2)b=13;
+        else if(index==3)b=15;
+      }
+      *output[index]|=1<<b;
+      while(Button(&GPIOE_IDR, 11, 1, 1)) {}
+  }
+  else if(Button(&GPIOE_IDR, 12, 1, 1))
+  {
+    *output[index]=0;
+      b++;
+      if(index==0 && b==16){b=0;index=3;}
+      else if(index==1&&b==13){b=0;index=0;}
+      else if(index==2&&b==14){b=0;index=1;}
+      else if(index==3&&b==16){b=0;index=2;}
+      *output[index]|=1<<b;
+       while(Button(&GPIOE_IDR, 12, 1, 1)) {}
+  }
+}
+
+
+}

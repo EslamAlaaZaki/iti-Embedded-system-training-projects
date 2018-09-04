@@ -1,0 +1,11 @@
+0	1	mikroCARM.exe -MSF -DBG -pSTM32F407VG -BIN -LHF -DL -SSA -O11111114 -fo16 -N"C:\Users\lab3\Desktop\Eslam_Alaa\session3\kit\task1\task1.mcpar" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Uses\ST M4\" -SP"C:\Users\lab3\Desktop\Eslam_Alaa\session3\kit\task1\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for ARM\Uses\ST M4\" -IP"C:\Users\lab3\Desktop\Eslam_Alaa\session3\kit\task1\" "task1.c" "__Lib_Math.emcl" "__Lib_MathDouble.emcl" "__Lib_Delays.emcl" "__Lib_System_4XX.emcl" "__Lib_GPIO_32F4xx_Defs.emcl" "__Lib_GPIO_32F4xx.emcl"	 
+diagnostics: 0	122	Compilation Started	task1.c
+diagnostics: 6	123	Compiled Successfully	task1.c
+diagnostics: 0	127	All files Compiled in 16 ms	 
+hint: 0	1144	Used RX: 16 (100%)   Free RX: 0 (0%)	Used RX: 16 (100%)   Free RX: 0 (0%)
+hint: 0	1144	Static RAM (bytes): 8   Dynamic RAM (bytes): 131061	Static RAM (bytes): 8   Dynamic RAM (bytes): 131061
+hint: 0	1144	Used ROM (bytes): 2328 (0%)  Free ROM (bytes): 1046248 (100%)	Used ROM (bytes): 2328 (0%)  Free ROM (bytes): 1046248 (100%)
+diagnostics: 0	125	Project Linked Successfully	task1.mcpar
+diagnostics: 0	128	Linked in 374 ms	 
+diagnostics: 0	129	Project 'task1.mcpar' completed: 593 ms	 
+diagnostics: 0	103	Finished successfully: 08 Улгиг 2018, 15:53:45	task1.mcpar

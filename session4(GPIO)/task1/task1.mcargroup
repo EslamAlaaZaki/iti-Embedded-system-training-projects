@@ -1,0 +1,6 @@
+[PROJECTS]
+Count=2
+Project0=..\..\session3\kit\task1\task1.mcpar
+Project1=task1.mcpar
+[ActiveProject]
+Index=1
