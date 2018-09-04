@@ -1,0 +1,35 @@
+#include "interface.h"
+#include "types.h"
+
+void buzzer(u8 frequency_KHz,f32 Duty,f32 Time_s )
+{
+    f32 Period_Time_us=1000.0/frequency_KHz;
+    u32 high=Period_Time_us*Duty;
+    u32 low= Period_Time_us-high;
+    u32 counter=0;
+    u64 counter1;
+     u64 num_of_cycles=((u64)(Time_s*1000000))/(u64)Period_Time_us;
+     for(counter1=0;counter1<num_of_cycles;counter1++)
+     {
+                GPIOE_ODR|=1<<14;
+                for(counter=0;counter<high;counter++)Delay_us(1);
+                GPIOE_ODR&=~(1<<14);
+                for(counter=0;counter<low;counter++)Delay_us(1);
+     }
+}
+void main() {
+ADC1_Init();
+ADC_Set_Input_Channel(_ADC_CHANNEL_4);
+GPIO_Digital_Output(&GPIOE_ODR,_GPIO_PINMASK_14);
+GPIO_Digital_Output(&GPIOD_ODR,_GPIO_PINMASK_ALL);
+
+while(1){
+u16 counter=0,vol=ADC1_Get_Sample(4)/250;
+buzzer(ADC1_Get_Sample(4)/200,0.5,0.1);
+for(counter=0;counter<vol;counter++) GPIOD_ODR|=1<<counter;
+for(counter=vol;counter<16;counter++) GPIOD_ODR&=~(1<<counter);
+
+
+  }
+
+}
